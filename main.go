@@ -39,7 +39,7 @@ func main() {
 	}
 
 	//Do migration to N version
-	if err := m.Steps(1); err != nil {
+	if err := m.Steps(2); err != nil {
 		log.Fatal(err)
 		return
 	}
