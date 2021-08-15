@@ -34,7 +34,6 @@ func main() {
 	}
 
 	if err := m.Steps(1); err != nil {
-
 		log.Fatal(err)
 	}
 }
