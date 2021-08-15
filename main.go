@@ -11,18 +11,23 @@ import (
 )
 
 func main() {
+	//connect to mysql server on localhost:3309
+	//on the real server, we should not hard code stuff like this
 	db, err := sql.Open("mysql", "admin:AAAA@tcp(localhost:3309)/db")
 	if err != nil {
 		fmt.Println("sql open err", err.Error())
 		return
 	}
 
+	//attach mysql client to mysql driver
 	driver, err := mysql.WithInstance(db, &mysql.Config{})
 	if err != nil {
 		fmt.Println("mysql with instance err", err.Error())
 		return
 	}
 
+	//load migration from file source(read more about migration sources https://github.com/golang-migrate/migrate#migration-sources)
+	//on this project we store migration file on migration folder
 	m, err := migrate.NewWithDatabaseInstance(
 		"file://./migration",
 		"mysql",
@@ -33,7 +38,9 @@ func main() {
 		return
 	}
 
+	//Do migration to N version
 	if err := m.Steps(1); err != nil {
 		log.Fatal(err)
+		return
 	}
 }
