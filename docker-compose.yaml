@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+#  service:
+#    image: "golang:1.14"
+#    build: ./build/go
+#    depends_on:
+#      - database
+#    networks:
+#      - mynet
+
+  database:
+    image: mysql:latest
+    ports:
+      - 3309:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=AAAA
+    networks:
+      - mynet
+networks:
+  mynet:
+    driver: "bridge"
