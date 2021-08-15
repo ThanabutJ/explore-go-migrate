@@ -37,9 +37,10 @@ func main() {
 		fmt.Println("mirate database err", err.Error())
 		return
 	}
+	defer m.Close()
 
 	//Do migration to N version
-	if err := m.Steps(2); err != nil {
+	if err := m.Migrate(2); err != nil {
 		log.Fatal(err)
 		return
 	}
