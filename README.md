@@ -10,11 +10,8 @@ You should have the golang-migrate cli-tool for generating the migration files.
 
 ### build from source
 
-clone the golang-mirate project
+clone the golang-mirate project from [github.com/golang-migrate/migrate](https://github.com/golang-migrate/migrate)
 
-```sh
-git clone github.com/golang-migrate/migrate
-```
 
 or run this on your terminal
 
